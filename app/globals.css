@@ -1,0 +1,294 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --sky-400: #38bdf8;
+  --sky-500: #0ea5e9;
+  --font-ibm-plex-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+    "Noto Sans", "Liberation Sans", sans-serif;
+  --font-ibm-plex-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  --font-bebas:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+    "Noto Sans", "Liberation Sans", sans-serif;
+}
+
+.dark {
+  --sky-400: #38bdf8;
+  --sky-500: #0ea5e9;
+}
+
+html.smooth-cursor-enabled,
+html.smooth-cursor-enabled * {
+  cursor: none !important;
+}
+
+/* Restore default cursor on specific elements */
+html.smooth-cursor-enabled.hide-custom-cursor,
+html.smooth-cursor-enabled.hide-custom-cursor * {
+  cursor: auto !important;
+}
+
+/* Hide custom cursor component when requested */
+html.hide-custom-cursor .inverted-cursor {
+  opacity: 0 !important;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes logo-carousel {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@layer utilities {
+  .animate-marquee {
+    animation: marquee var(--duration, 30s) linear infinite;
+  }
+
+  .animate-marquee-reverse {
+    animation-direction: reverse;
+  }
+
+  .animate-logo-carousel {
+    animation: logo-carousel var(--duration, 28s) linear infinite;
+  }
+}
+
+/* Custom editorial design tokens - monochrome with orange accent */
+:root {
+  --background: oklch(0.975 0.01 90);
+  --foreground: oklch(0.14 0.01 90);
+  --card: oklch(0.985 0.008 90);
+  --card-foreground: oklch(0.14 0.01 90);
+  --popover: oklch(0.985 0.008 90);
+  --popover-foreground: oklch(0.14 0.01 90);
+  --primary: oklch(0.14 0.01 90);
+  --primary-foreground: oklch(0.975 0.01 90);
+  --secondary: oklch(0.95 0.01 90);
+  --secondary-foreground: oklch(0.22 0.01 90);
+  --muted: oklch(0.94 0.01 90);
+  --muted-foreground: oklch(0.44 0.02 90);
+  --accent: #F48018;
+  --accent-rgb: 244, 128, 24;
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.83 0.01 90);
+  --input: oklch(0.83 0.01 90);
+  --ring: #F48018;
+  --radius: 0rem;
+  --sidebar: oklch(0.97 0.01 90);
+  --sidebar-foreground: oklch(0.14 0.01 90);
+  --sidebar-primary: #F48018;
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.955 0.01 90);
+  --sidebar-accent-foreground: oklch(0.14 0.01 90);
+  --sidebar-border: oklch(0.83 0.01 90);
+  --sidebar-ring: oklch(0.7 0.2 45);
+
+  --grid-line: oklch(0.82 0.01 90);
+
+
+  --bg-0: #faf9f5;
+  --bg-000: #faf9f5;
+  --bg-100: #ffffff;
+  --bg-200: #f0eee6;
+  --bg-300: #dddddd;
+  --text-100: #1f1e1d;
+  --text-200: #3d3d3a;
+  --text-300: #73726c;
+  --text-400: #888888;
+  --text-500: #999999;
+  --accent-hover: #D36D0D;
+  --ease-silk: cubic-bezier(0.2, 0, 0, 1);
+}
+
+.dark {
+  --background: oklch(0.08 0 0);
+  --foreground: oklch(0.95 0 0);
+  --card: oklch(0.12 0 0);
+  --card-foreground: oklch(0.95 0 0);
+  --popover: oklch(0.1 0 0);
+  --popover-foreground: oklch(0.95 0 0);
+  --primary: oklch(0.95 0 0);
+  --primary-foreground: oklch(0.08 0 0);
+  --secondary: oklch(0.18 0 0);
+  --secondary-foreground: oklch(0.85 0 0);
+  --muted: oklch(0.25 0 0);
+  --muted-foreground: oklch(0.55 0 0);
+  --accent: #F48018;
+  --accent-rgb: 244, 128, 24;
+  --accent-foreground: oklch(0.08 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.25 0 0);
+  --input: oklch(0.2 0 0);
+  --ring: #F48018;
+  --radius: 0rem;
+  --sidebar: oklch(0.1 0 0);
+  --sidebar-foreground: oklch(0.95 0 0);
+  --sidebar-primary: #F48018;
+  --sidebar-primary-foreground: oklch(0.08 0 0);
+  --sidebar-accent: oklch(0.15 0 0);
+  --sidebar-accent-foreground: oklch(0.95 0 0);
+  --sidebar-border: oklch(0.25 0 0);
+  --sidebar-ring: #F48018;
+
+  --grid-line: oklch(0.18 0 0);
+
+
+  --bg-0: #212121;
+  --bg-000: #212121;
+  --bg-100: #262624;
+  --bg-200: #30302e;
+  --bg-300: #454540;
+  --text-100: #ececec;
+  --text-200: #e1e1e0;
+  --text-300: #b4b4b4;
+  --text-400: #8a8a88;
+  --text-500: #6b6b65;
+  --accent-hover: #FF9838;
+}
+
+@theme inline {
+  --color-bg-0: var(--bg-0);
+  --color-bg-000: var(--bg-000);
+  --color-bg-100: var(--bg-100);
+  --color-bg-200: var(--bg-200);
+  --color-bg-300: var(--bg-300);
+  --color-text-100: var(--text-100);
+  --color-text-200: var(--text-200);
+  --color-text-300: var(--text-300);
+  --color-text-400: var(--text-400);
+  --color-text-500: var(--text-500);
+  --color-accent-hover: var(--accent-hover);
+  --font-serif: "Source Serif 4", Georgia, serif;
+  --shadow-input:
+    0 1px 2px -1px rgba(0, 0, 0, 0.08), 0 2px 8px -2px rgba(0, 0, 0, 0.04);
+  --shadow-input-hover:
+    0 1px 2px -1px rgba(0, 0, 0, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.08);
+  --shadow-input-focus:
+    0 0 0 2px rgba(244, 128, 24, 0.1), 0 4px 12px -2px rgba(0, 0, 0, 0.08);
+
+  /* Updated font-sans and font-mono to use IBM Plex */
+  --font-sans: "IBM Plex Sans", "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "IBM Plex Mono Fallback", monospace;
+  --font-display: "Bebas Neue", "Bebas Neue Fallback", sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(0, 0%, 55%) hsl(0, 0%, 96%);
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  /* Webkit scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(0, 0%, 96%);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(0, 0%, 55%);
+    border-radius: 0px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(0, 0%, 45%);
+  }
+}
+
+
+
+/* Linear grid background pattern */
+.grid-bg {
+  background-image: 
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 100px 100px;
+  opacity: 0.35;
+}
+
+/* Custom selection color */
+::selection {
+  background: #F48018;
+  color: oklch(0.08 0 0);
+}
+
+/* Premium Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Subtle data-scanning beam animation */
+@keyframes scanning-beam {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.animate-scan {
+  animation: scanning-beam 8s linear infinite;
+  background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+  height: 100px;
+  width: 100%;
+  opacity: 0.05;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
