@@ -274,21 +274,3 @@ html.hide-custom-cursor .inverted-cursor {
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Subtle data-scanning beam animation */
-@keyframes scanning-beam {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100vh); }
-}
-
-.animate-scan {
-  animation: scanning-beam 8s linear infinite;
-  background: linear-gradient(to bottom, transparent, var(--accent), transparent);
-  height: 100px;
-  width: 100%;
-  opacity: 0.05;
-  pointer-events: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-}
