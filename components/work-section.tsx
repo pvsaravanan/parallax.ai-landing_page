@@ -94,22 +94,32 @@ export function WorkSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="work" className="relative py-32 pl-6 md:pl-28 pr-6 md:pr-12">
+    <section ref={sectionRef} id="work" className="relative py-24 pt-28 md:pt-32 md:py-32 pl-6 md:pl-28 pr-6 md:pr-12">
       {/* Section header */}
       <div ref={headerRef} className="mb-16 flex items-end justify-between">
         <div>
           <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">02 / Rankings</span>
           <h2 className="mt-4 font-[var(--font-bebas)] text-5xl md:text-7xl tracking-tight">OUTCOMES</h2>
         </div>
+        <p className="mt-4 md:hidden max-w-xs font-mono text-xs text-muted-foreground leading-relaxed">
+          A platform for preference data collection, comparison workflows, and public leaderboards.
+        </p>
         <p className="hidden md:block max-w-xs font-mono text-xs text-muted-foreground text-right leading-relaxed">
           A platform for preference data collection, comparison workflows, and public leaderboards.
         </p>
       </div>
 
-      {/* Asymmetric grid */}
+      {/* Mobile: single column list */}
+      <div className="md:hidden flex flex-col gap-4">
+        {experiments.map((experiment, index) => (
+          <WorkCard key={index} experiment={{ ...experiment, span: "" }} index={index} persistHover={index === 0} />
+        ))}
+      </div>
+
+      {/* Desktop: asymmetric grid */}
       <div
         ref={gridRef}
-        className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[180px] md:auto-rows-[200px]"
+        className="hidden md:grid grid-cols-4 gap-6 auto-rows-[200px]"
       >
         {experiments.map((experiment, index) => (
           <WorkCard key={index} experiment={experiment} index={index} persistHover={index === 0} />
@@ -157,7 +167,7 @@ function WorkCard({
     <article
       ref={cardRef}
       className={cn(
-        "group relative border border-border/40 p-5 flex flex-col justify-between transition-all duration-500 cursor-pointer overflow-hidden",
+        "group relative border border-border/40 p-5 flex flex-col justify-between transition-all duration-500 cursor-pointer overflow-hidden min-h-[160px] md:min-h-0",
         experiment.span,
         isActive && "border-accent/60",
       )}
@@ -187,12 +197,13 @@ function WorkCard({
         </h3>
       </div>
 
-      {/* Description - reveals on hover */}
+      {/* Description - always visible on mobile, reveals on hover on desktop */}
       <div className="relative z-10">
         <p
           className={cn(
             "font-mono text-xs text-muted-foreground leading-relaxed transition-all duration-500 max-w-[280px]",
-            isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2",
+            "md:opacity-0 md:translate-y-2",
+            isActive ? "md:opacity-100 md:translate-y-0" : "",
           )}
         >
           {experiment.description}

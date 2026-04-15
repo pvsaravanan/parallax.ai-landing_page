@@ -90,7 +90,7 @@ export function PrinciplesSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="principles" className="relative py-32 pl-6 md:pl-28 pr-6 md:pr-12">
+    <section ref={sectionRef} id="principles" className="relative py-24 pt-28 md:pt-32 md:py-32 pl-6 md:pl-28 pr-6 md:pr-12">
       {/* Section header */}
       <div ref={headerRef} className="mb-24">
         <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">03 / Method</span>
@@ -102,12 +102,12 @@ export function PrinciplesSection() {
       </div>
 
       {/* Staggered principles */}
-      <div ref={principlesRef} className="space-y-24 md:space-y-32">
+      <div ref={principlesRef} className="space-y-16 md:space-y-32">
         {principles.map((principle, index) => (
           <article
             key={index}
             className={`flex flex-col ${
-              principle.align === "right" ? "items-end text-right" : "items-start text-left"
+              principle.align === "right" ? "items-start text-left md:items-end md:text-right" : "items-start text-left"
             }`}
           >
             {/* Annotation label */}
@@ -115,7 +115,7 @@ export function PrinciplesSection() {
               {principle.number} / {principle.titleParts[0].text.split(" ")[0]}
             </span>
 
-            <h3 className="font-[var(--font-bebas)] text-4xl md:text-6xl lg:text-8xl tracking-tight leading-none">
+            <h3 className="font-[var(--font-bebas)] text-4xl sm:text-5xl md:text-6xl lg:text-8xl tracking-tight leading-none">
               {principle.titleParts.map((part, i) =>
                 part.highlight ? (
                   <HighlightText key={i} parallaxSpeed={0.6}>

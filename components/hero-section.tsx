@@ -35,11 +35,11 @@ export function HeroSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="hero" className="relative min-h-screen flex items-center pl-6 md:pl-28 pr-6 md:pr-12">
+    <section ref={sectionRef} id="hero" className="relative min-h-screen flex items-center pt-16 md:pt-0 pl-6 md:pl-28 pr-6 md:pr-12">
 
 
       {/* Left vertical labels */}
-      <div className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2">
+      <div className="hidden md:block absolute left-4 md:left-6 top-1/2 -translate-y-1/2">
         <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground -rotate-90 origin-left block whitespace-nowrap">
           PARALLAX.AI
         </span>

@@ -87,7 +87,7 @@ export function SignalsSection({ logos }: { logos: LogoCarouselItem[] }) {
   }, [])
 
   return (
-    <section id="signals" ref={sectionRef} className="relative py-32 pl-6 md:pl-28">
+    <section id="signals" ref={sectionRef} className="relative py-24 pt-28 md:pt-32 md:py-32 pl-6 md:pl-28">
       <div className="pr-6 md:pr-12 -mt-14 mb-8">
         <LogoCarousel logos={logos} />
       </div>
