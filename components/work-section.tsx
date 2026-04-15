@@ -96,15 +96,17 @@ export function WorkSection() {
   return (
     <section ref={sectionRef} id="work" className="relative py-24 pt-28 md:pt-32 md:py-32 pl-6 md:pl-28 pr-6 md:pr-12">
       {/* Section header */}
-      <div ref={headerRef} className="mb-16 flex items-end justify-between">
-        <div>
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">02 / Rankings</span>
-          <h2 className="mt-4 font-[var(--font-bebas)] text-5xl md:text-7xl tracking-tight">OUTCOMES</h2>
+      <div ref={headerRef} className="mb-16">
+        <div className="flex items-end justify-between">
+          <div>
+            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">02 / Rankings</span>
+            <h2 className="mt-4 font-[var(--font-bebas)] text-5xl md:text-7xl tracking-tight">OUTCOMES</h2>
+          </div>
+          <p className="hidden md:block max-w-xs font-mono text-xs text-muted-foreground text-right leading-relaxed">
+            A platform for preference data collection, comparison workflows, and public leaderboards.
+          </p>
         </div>
-        <p className="mt-4 md:hidden max-w-xs font-mono text-xs text-muted-foreground leading-relaxed">
-          A platform for preference data collection, comparison workflows, and public leaderboards.
-        </p>
-        <p className="hidden md:block max-w-xs font-mono text-xs text-muted-foreground text-right leading-relaxed">
+        <p className="mt-4 md:hidden font-mono text-xs text-muted-foreground leading-relaxed">
           A platform for preference data collection, comparison workflows, and public leaderboards.
         </p>
       </div>
