@@ -4,7 +4,6 @@ import { useEffect, useRef } from "react"
 import { SplitFlapText, SplitFlapMuteToggle, SplitFlapAudioProvider } from "@/components/split-flap-text"
 import { Magnetic } from "@/components/ui/magnetic"
 
-import Link from "next/link"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -67,16 +66,16 @@ export function HeroSection() {
         {/* Get started terminal prompt */}
         <div className="mt-12 flex items-center gap-6">
           <Magnetic strength={0.2}>
-            <Link
-              href="/chat"
+            <button
+              onClick={() => document.getElementById("signals")?.scrollIntoView({ behavior: "smooth" })}
               className="glass group relative flex items-center gap-3 border-accent/30 hover:border-accent/70 px-6 py-4 w-full max-w-sm hover:shadow-[0_0_24px_rgba(var(--accent-rgb),0.2)] transition-all duration-500 rounded-sm"
             >
               <span className="font-mono text-sm text-accent font-bold select-none">{">_"}</span>
               <span className="font-mono text-sm text-muted-foreground tracking-wide group-hover:text-foreground transition-colors duration-200">
-                Get started...
+                Explore modes...
               </span>
               <span className="ml-auto w-2.5 h-5 bg-accent animate-pulse" />
-            </Link>
+            </button>
           </Magnetic>
         </div>
       </div>

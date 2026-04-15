@@ -87,16 +87,15 @@ export function ColophonSection() {
   }, [])
 
   const evaluationModes = [
-    { name: "Battle", href: "/battle", desc: "Anonymous comparison" },
-    { name: "Side-by-side", href: "/side-by-side", desc: "Controlled eval" },
-    { name: "Direct Chat", href: "/direct", desc: "Single model" },
-    { name: "Chat Interface", href: "/chat", desc: "Interactive demo" },
+    { name: "Battle", desc: "Anonymous comparison" },
+    { name: "Side-by-side", desc: "Controlled eval" },
+    { name: "Direct Chat", desc: "Single model" },
+    { name: "Chat Interface", desc: "Interactive demo" },
   ]
 
   const resources = [
-    { name: "Rankings", href: "/rankings", desc: "Public leaderboards" },
-    { name: "Methodology", href: "/#principles", desc: "How we evaluate" },
-    { name: "Signals", href: "/#signals", desc: "Evaluation modes" },
+    { name: "Methodology", section: "principles", desc: "How we evaluate" },
+    { name: "Evaluation Modes", section: "signals", desc: "Evaluation modes" },
   ]
 
   const connect = [
@@ -133,13 +132,9 @@ export function ColophonSection() {
             <ul className="space-y-3">
               {evaluationModes.map((mode) => (
                 <li key={mode.name}>
-                  <a
-                    href={mode.href}
-                    className="group flex items-center justify-between font-mono text-sm text-foreground/90 hover:text-accent transition-colors duration-200"
-                  >
+                  <span className="flex items-center justify-between font-mono text-sm text-foreground/50 cursor-default">
                     <span>{mode.name}</span>
-                    <ArrowUpRight className="h-3 w-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
-                  </a>
+                  </span>
                   <span className="block font-mono text-[10px] text-muted-foreground mt-1">{mode.desc}</span>
                 </li>
               ))}
@@ -151,13 +146,13 @@ export function ColophonSection() {
             <ul className="space-y-3">
               {resources.map((item) => (
                 <li key={item.name}>
-                  <a
-                    href={item.href}
-                    className="group flex items-center justify-between font-mono text-sm text-foreground/90 hover:text-accent transition-colors duration-200"
+                  <button
+                    onClick={() => document.getElementById(item.section)?.scrollIntoView({ behavior: "smooth" })}
+                    className="group flex items-center justify-between w-full font-mono text-sm text-foreground/90 hover:text-accent transition-colors duration-200"
                   >
                     <span>{item.name}</span>
                     <ArrowUpRight className="h-3 w-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
-                  </a>
+                  </button>
                   <span className="block font-mono text-[10px] text-muted-foreground mt-1">{item.desc}</span>
                 </li>
               ))}

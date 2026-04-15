@@ -13,25 +13,21 @@ const signals = [
     date: "MODE.01",
     title: "Battle",
     note: "Two anonymous models. One prompt. Pick the better response. Designed to reduce brand bias.",
-    href: "/battle",
   },
   {
     date: "MODE.02",
     title: "Direct Chat",
     note: "Chat with a single model and record preference signals through structured feedback and outcomes.",
-    href: "/direct",
   },
   {
     date: "MODE.03",
     title: "Side-by-side",
     note: "Select two models explicitly and compare responses in parallel for targeted evaluations.",
-    href: "/side-by-side",
   },
   {
     date: "DATA.01",
     title: "Rankings",
     note: "Aggregate judgments into public leaderboards with transparent sampling and metrics.",
-    href: "/rankings",
   },
 ]
 
@@ -118,12 +114,11 @@ function SignalCard({
   signal,
   index,
 }: {
-  signal: { date: string; title: string; note: string; href: string }
+  signal: { date: string; title: string; note: string }
   index: number
 }) {
   return (
-    <a
-      href={signal.href}
+    <div
       className={cn(
         "group relative w-full",
         "transition-transform duration-500 ease-out",
@@ -162,6 +157,6 @@ function SignalCard({
 
       {/* Shadow/depth layer */}
       <div className="absolute inset-0 -z-10 translate-x-1 translate-y-1 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-    </a>
+    </div>
   )
 }
