@@ -9,40 +9,43 @@ gsap.registerPlugin(ScrollTrigger)
 
 const experiments = [
   {
-    title: "Public Rankings",
-    medium: "Aggregation",
-    description: "Turn pairwise preferences into transparent leaderboards and trendlines across tasks and time.",
+    title: "PROOF",
+    medium: "Community",
+    description:
+      "No lab decides the winner. Every vote does. A live leaderboard built entirely on real user preference — not sponsored benchmarks.",
     span: "col-span-2 row-span-2",
   },
   {
-    title: "Fair Comparisons",
-    medium: "Blinding",
-    description: "Battle mode supports anonymous evaluation to reduce presentation and brand effects.",
-    span: "col-span-1 row-span-1",
-  },
-  {
-    title: "Reproducible Studies",
-    medium: "Protocol",
-    description: "Versioned prompts, policies, and datasets so results can be repeated and audited.",
+    title: "DEVELOPERS",
+    titleBottom: undefined,
+    medium: "Developer",
+    description:
+      "A/B test models mid-build, monitor token usage in real time, and catch cost spikes before they hit. Built for the whole dev cycle, not just the first call.",
     span: "col-span-1 row-span-2",
   },
   {
-    title: "Extensible Tasks",
-    medium: "Framework",
-    description: "Add new domains, rubrics, and evaluation templates without rewriting the product.",
-    span: "col-span-1 row-span-1",
+    title: "ANALYTICS",
+    titleBottom: undefined,
+    medium: "Performance",
+    description:
+      "Live latency and token throughput per model. Know exactly how fast it performs before you commit.",
+    span: "col-span-1 row-span-2",
   },
   {
-    title: "Side-by-side Analysis",
-    medium: "Comparison",
-    description: "Explicitly select two models for targeted evaluation and controlled ablations.",
+    title: "ONE KEY. INFINITE MODELS.",
+    titleBottom: undefined,
+    medium: "Access",
+    description:
+      "One API key unlocks every open-source model on the platform. No sign-ups, no switching providers, no separate billing.",
     span: "col-span-2 row-span-1",
   },
   {
-    title: "Research-First UX",
-    medium: "Instrument",
-    description: "Designed for measurement quality and interpretability—not just benchmark scores.",
-    span: "col-span-1 row-span-1",
+    title: "RESEARCH READY",
+    titleBottom: undefined,
+    medium: "Research",
+    description:
+      "Give researchers clean, real-world data to study, analyze, and publish.Turn every battle into a citable dataset that advances AI and ML research.",
+    span: "col-span-2 row-span-1",
   },
 ]
 
@@ -55,7 +58,6 @@ export function WorkSection() {
     if (!sectionRef.current || !headerRef.current || !gridRef.current) return
 
     const ctx = gsap.context(() => {
-      // Header slide in from left
       gsap.fromTo(
         headerRef.current,
         { x: -60, opacity: 0 },
@@ -94,13 +96,20 @@ export function WorkSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="work" className="relative py-24 pt-28 md:pt-32 md:py-32 pl-6 md:pl-28 pr-6 md:pr-12">
-      {/* Section header */}
+    <section
+      ref={sectionRef}
+      id="work"
+      className="relative py-24 pt-28 md:pt-32 md:py-32 pl-6 md:pl-28 pr-6 md:pr-12"
+    >
       <div ref={headerRef} className="mb-16">
         <div className="flex items-end justify-between">
           <div>
-            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">02 / Rankings</span>
-            <h2 className="mt-4 font-[var(--font-bebas)] text-5xl md:text-7xl tracking-tight">OUTCOMES</h2>
+            <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
+              02 / Outcomes
+            </span>
+            <h2 className="mt-4 font-[var(--font-bebas)] text-5xl md:text-7xl tracking-tight">
+              OUTCOMES
+            </h2>
           </div>
           <p className="hidden md:block max-w-xs font-mono text-xs text-muted-foreground text-right leading-relaxed">
             A platform for preference data collection, comparison workflows, and public leaderboards.
@@ -111,18 +120,15 @@ export function WorkSection() {
         </p>
       </div>
 
-      {/* Mobile: single column list */}
+      {/* Mobile */}
       <div className="md:hidden flex flex-col gap-4">
         {experiments.map((experiment, index) => (
           <WorkCard key={index} experiment={{ ...experiment, span: "" }} index={index} persistHover={index === 0} />
         ))}
       </div>
 
-      {/* Desktop: asymmetric grid */}
-      <div
-        ref={gridRef}
-        className="hidden md:grid grid-cols-4 gap-6 auto-rows-[200px]"
-      >
+      {/* Desktop */}
+      <div ref={gridRef} className="hidden md:grid grid-cols-4 gap-6 auto-rows-[200px]">
         {experiments.map((experiment, index) => (
           <WorkCard key={index} experiment={experiment} index={index} persistHover={index === 0} />
         ))}
@@ -138,6 +144,7 @@ function WorkCard({
 }: {
   experiment: {
     title: string
+    titleBottom?: string
     medium: string
     description: string
     span: string
@@ -176,7 +183,7 @@ function WorkCard({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Background layer */}
+      {/* Background */}
       <div
         className={cn(
           "absolute inset-0 bg-accent/5 transition-opacity duration-500",
@@ -184,35 +191,49 @@ function WorkCard({
         )}
       />
 
-      {/* Content */}
+      {/* Top Content */}
       <div className="relative z-10">
         <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
           {experiment.medium}
         </span>
-        <h3
-          className={cn(
-            "mt-3 font-[var(--font-bebas)] text-2xl md:text-4xl tracking-tight transition-colors duration-300",
-            isActive ? "text-accent" : "text-foreground",
+
+        <div className="mt-3">
+          <h3
+            className={cn(
+              "font-[var(--font-bebas)] text-2xl md:text-4xl tracking-tight leading-none transition-colors duration-300",
+              isActive ? "text-accent" : "text-foreground",
+            )}
+          >
+            {experiment.title}
+          </h3>
+
+          {experiment.titleBottom && (
+            <h3
+              className={cn(
+                "font-[var(--font-bebas)] text-2xl md:text-4xl tracking-tight leading-none transition-colors duration-300",
+                isActive ? "text-accent" : "text-foreground",
+              )}
+            >
+              {experiment.titleBottom}
+            </h3>
           )}
-        >
-          {experiment.title}
-        </h3>
+        </div>
       </div>
 
-      {/* Description - always visible on mobile, reveals on hover on desktop */}
+      {/* Bottom Content */}
       <div className="relative z-10">
         <p
           className={cn(
             "font-mono text-xs text-muted-foreground leading-relaxed transition-all duration-500 max-w-[280px]",
             "md:opacity-0 md:translate-y-2",
-            isActive ? "md:opacity-100 md:translate-y-0" : "",
+            isActive && "md:opacity-100 md:translate-y-0",
           )}
         >
           {experiment.description}
         </p>
       </div>
 
-      {/* Index marker */}
+      {/* Index */}
       <span
         className={cn(
           "absolute bottom-4 right-4 font-mono text-[10px] transition-colors duration-300",
