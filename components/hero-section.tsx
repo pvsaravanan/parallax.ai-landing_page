@@ -55,13 +55,13 @@ export function HeroSection() {
           </div>
         </SplitFlapAudioProvider>
 
-        <h2 className="font-[var(--font-bebas)] text-muted-foreground/60 text-[clamp(1rem,3vw,2rem)] mt-4 tracking-wide">
-          Human-Preference Evaluation for LLMs
-        </h2>
+       <h2 className="font-[var(--font-bebas)] text-muted-foreground/60 text-[clamp(1rem,3vw,2rem)] mt-4 tracking-wide">
+        Human-Preference Evaluation for Open-Source LLMs
+      </h2>
 
-        <p className="mt-12 max-w-md comfortaa-hero text-sm text-muted-foreground leading-relaxed">
-          Battle anonymous models, run direct chat studies, or compare side-by-side. Aggregate human judgments into public rankings.
-        </p>
+      <p className="mt-4 max-w-md comfortaa-hero text-sm text-muted-foreground leading-relaxed">
+        Battle anonymous models, chat directly, or compare side-by-side —every vote builds a transparent, real-world leaderboard
+      </p>
 
         {/* Get started terminal prompt */}
         <div className="mt-12 flex items-center gap-6">
