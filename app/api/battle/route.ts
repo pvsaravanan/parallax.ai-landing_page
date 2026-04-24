@@ -133,9 +133,16 @@ export async function POST(req: Request) {
     const resA = await fetchCompletion(modelA).catch(e => e.message);
     const resB = await fetchCompletion(modelB).catch(e => e.message);
 
+    const cleanModelName = (id: string) => {
+      // Remove namespaces like 'meta-llama/', 'google/', etc.
+      const withoutNamespace = id.includes('/') ? id.split('/').pop() || id : id;
+      // Remove suffixes like ':free'
+      return withoutNamespace.replace(':free', '');
+    };
+
     return NextResponse.json({
-      modelA: { name: modelA.id, response: resA },
-      modelB: { name: modelB.id, response: resB }
+      modelA: { name: cleanModelName(modelA.id), response: resA },
+      modelB: { name: cleanModelName(modelB.id), response: resB }
     });
   } catch (err: any) {
     console.error("API Battle Error:", err);
