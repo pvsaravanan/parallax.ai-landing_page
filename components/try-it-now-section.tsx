@@ -43,7 +43,13 @@ export function TryItNowSection() {
         body: JSON.stringify({ prompt }),
       })
       
-      const data = await res.json()
+      const responseText = await res.text()
+      let data
+      try {
+        data = JSON.parse(responseText)
+      } catch (e) {
+        throw new Error(`Server returned a non-JSON response. This usually means a 500 error or the server is down. Raw response: ${responseText.slice(0, 100)}...`)
+      }
       
       if (!res.ok) {
         throw new Error(data.error || "Failed to fetch response.")
