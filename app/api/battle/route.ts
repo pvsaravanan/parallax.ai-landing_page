@@ -134,8 +134,8 @@ export async function POST(req: Request) {
     const resB = await fetchCompletion(modelB).catch(e => e.message);
 
     return NextResponse.json({
-      modelA: { name: `${modelA.id} (${modelA.provider})`, response: resA },
-      modelB: { name: `${modelB.id} (${modelB.provider})`, response: resB }
+      modelA: { name: modelA.id, response: resA },
+      modelB: { name: modelB.id, response: resB }
     });
   } catch (err: any) {
     console.error("API Battle Error:", err);
