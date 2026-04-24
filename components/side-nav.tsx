@@ -9,6 +9,7 @@ const navItems = [
   { id: "hero", label: "Overview" },
   { id: "signals", label: "Modes" },
   { id: "work", label: "Rankings" },
+  { id: "try-it-now", label: "Arena" },
   { id: "principles", label: "Method" },
   { id: "colophon", label: "Links" },
 ]
